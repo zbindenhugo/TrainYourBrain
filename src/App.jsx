@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Question from './pages/question/Question';
 import Results from './pages/results/Results';
 import { useEffect } from 'react';
-import QuestionDesign from './pages/question/QuestionDesign';
 
 function App() {
   
@@ -18,7 +16,7 @@ function App() {
 
   //Reçu par un fetch
   const [randomQuestions, setrandomQuestions] = useState([]);
-  const [allCategories, setAllCategories] = useState([]);
+  const [allCategories, setAllCategories] = useState({});
   
   const [results, setResults] = useState([]);
   const [difficulty, setDifficulty] = useState('')
@@ -29,9 +27,13 @@ function App() {
     
     toggleIsLoading(true);
 
+    await setrandomQuestions([]);
+    await setResults([]);
+    await setIndexQuestion(0);
+
+
     const fetchQuestions = async () => {
-      //console.log(`https://the-trivia-api.com/api/questions?${difficulty ? 'difficulty=' + difficulty.toLowerCase() + '&' : ''}${categorie ? 'categories=' + categorie.map((cat) => cat.replace(' ', '_').toLowerCase() + ',') + '&' : ''}${nbQuestions !== 10 ? 'limit=' + nbQuestions : 'limit=10'}`);
-      return fetch(`https://the-trivia-api.com/api/questions?${difficulty ? 'difficulty=' + difficulty.toLowerCase() + '&' : ''}${categorie ? 'categories=' + categorie.map((cat) => cat.replace(' ', '_').toLowerCase() + ',') + '&' : ''}${nbQuestions !== 10 ? 'limit=' + nbQuestions : 'limit=10'}`)
+      return await fetch(`https://the-trivia-api.com/api/questions?${difficulty ? 'difficulty=' + difficulty.toLowerCase() + '&' : ''}${categorie ? 'categories=' + categorie + '&' : ''}${nbQuestions !== 10 ? 'limit=' + nbQuestions : 'limit=10'}`)
                 .then((response) => response.json())
                 .then((responseJson) => {
                   return responseJson;
@@ -45,14 +47,27 @@ function App() {
   }
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      await fetch('https://the-trivia-api.com/api/categories')
+        .then((response) => response.json())
+        .then((responseJson) => {
+          setAllCategories(responseJson);
+        })
+    }
+
+    fetchCategories();
+
+  }, [])
+
+  useEffect(() => {
     if(randomQuestions.length > 0)
-      navigate(`/questions/${randomQuestions[0].id}`)
+      navigate(`/questions/${randomQuestions[0]?.id}`)
   }, [randomQuestions])
 
 
   return (
     <Routes>
-      <Route path='/' element={<Home categorie={categorie} setCategorie={setCategorie} difficulty={difficulty} nbQuestions={nbQuestions} setDifficulty={setDifficulty} setnbQuestions={setnbQuestions} handleClickStart={handleClickStart} isLoading={isLoading} />} />
+      <Route path='/' element={<Home categorie={categorie} setCategorie={setCategorie} difficulty={difficulty} nbQuestions={nbQuestions} setDifficulty={setDifficulty} setnbQuestions={setnbQuestions} handleClickStart={handleClickStart} isLoading={isLoading} allCategories={allCategories} />} />
       <Route path='/questions/:id' element={<Question questions={randomQuestions} indexQuestion={indexQuestion} setIndexQuestion={setIndexQuestion} setResults={setResults} setScore={setScore} score={score} />} />
       <Route path='/results' element={<Results results={results} questions={randomQuestions} score={score} />} />
     </Routes>

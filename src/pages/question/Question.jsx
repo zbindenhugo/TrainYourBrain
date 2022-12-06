@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import './Question.css'
 import RandomButtons from "../components/RandomButtons";
+import { useState } from "react";
 
 export default function Question( {questions, indexQuestion, setIndexQuestion, setResults, setScore, score} ){
 
@@ -23,9 +24,9 @@ export default function Question( {questions, indexQuestion, setIndexQuestion, s
 
     return(
         <div className="bg-question h-[100vh] w-[100vw] text-white">
-            <div className="fixed text-center sm:mt-[15%] mt-0 w-full p-5">
+            <div className="fixed text-center top-1/2 -translate-y-1/2 w-full p-5">
                 <div>
-                    <div className="sm:text-5xl text-xl">
+                    <div className="md:text-5xl text-3xl">
                         {
                             questions[indexQuestion].question
                         }

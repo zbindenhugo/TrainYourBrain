@@ -1,6 +1,6 @@
-.bg-div {
+body {
     background: linear-gradient(312deg, #7573ffcc, #b25f0070, #ce0000ab);
-    background-size: 600% 600%;
+    background-size: 1000% 100000%;
 
     -webkit-animation: AnimationName 12s ease infinite;
     -moz-animation: AnimationName 12s ease infinite;
