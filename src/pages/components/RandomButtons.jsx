@@ -6,7 +6,7 @@ export default function RandomButtons({ x, questions, indexQuestion, handleCorre
     switch(x){
         case 0:
             return(
-                <div className="grid sm:grid-cols-4 grid-cols-2 text-center gap-10">
+                <div className="grid sm:grid-cols-4 grid-cols-1 text-center gap-10">
                     <Link 
                         to={indexQuestion === questions.length - 1 ? '/results' : `/questions/${questions[indexQuestion].id}`}
                         onClick={(e) => handleCorrectAnswerClick(e)} 
@@ -44,7 +44,7 @@ export default function RandomButtons({ x, questions, indexQuestion, handleCorre
             );
         case 1:
             return(
-                <div className="grid sm:grid-cols-4 grid-cols-2 text-center gap-10">
+                <div className="grid sm:grid-cols-4 grid-cols-1 text-center gap-10">
                     <Link 
                         to={indexQuestion === questions.length - 1 ? '/results' : `/questions/${questions[indexQuestion].id}`}
                         onClick={(e) => handleIncorrectAnswerClick(e)} 
@@ -81,7 +81,7 @@ export default function RandomButtons({ x, questions, indexQuestion, handleCorre
             );
         case 2:
             return(
-                <div className="grid sm:grid-cols-4 grid-cols-2 text-center gap-10">
+                <div className="grid sm:grid-cols-4 grid-cols-1 text-center gap-10">
                     <Link 
                         to={indexQuestion === questions.length - 1 ? '/results' : `/questions/${questions[indexQuestion].id}`}
                         onClick={(e) => handleIncorrectAnswerClick(e)} 
@@ -118,7 +118,7 @@ export default function RandomButtons({ x, questions, indexQuestion, handleCorre
             );
         case 3:
             return(
-                <div className="grid sm:grid-cols-4 grid-cols-2 text-center gap-10">
+                <div className="grid sm:grid-cols-4 grid-cols-1 text-center gap-10">
                     <Link 
                         to={indexQuestion === questions.length - 1 ? '/results' : `/questions/${questions[indexQuestion].id}`}
                         onClick={(e) => handleIncorrectAnswerClick(e)}

@@ -23,7 +23,7 @@ export default function Question( {questions, indexQuestion, setIndexQuestion, s
 
     return(
         <div className="bg-question h-[100vh] w-[100vw] text-white">
-            <div className="fixed text-center mt-[15%] left-1/2 -translate-x-1/2 w-full p-5">
+            <div className="fixed text-center sm:mt-[15%] mt-0 w-full p-5">
                 <div>
                     <div className="sm:text-5xl text-xl">
                         {

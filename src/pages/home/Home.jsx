@@ -1,14 +1,14 @@
 import './Home.css';
 import { motion } from "framer-motion";
 
-export default function Home ({difficulty, setDifficulty, categorie, setCategorie, nbQuestions, setnbQuestions, handleClickStart, isLoading}) {
+export default function Home ({handleClickStart, isLoading}) {
     return(
         <div className="bg-div h-[100vh] w-[100vw]">
-            <div className='absolute sm:mt-[15%] sm:ml-[25%]'>
-                <div className='text-center sm:text-[6rem] text-3xl text-white'>
+            <div className='fixed top-1/2 -translate-y-1/2 text-center w-full'>
+                <div className='text-center text-3xl sm:text-5xl 2xl:text-7xl text-white'>
                     My Culture Training
                 </div>
-                <div className='text-center text-xl italic text-slate-700 mt-10'>
+                <div className='text-center sm:text-xl text-md italic text-slate-700 mt-10'>
                     Train your culture here with series of questions !
                 </div>
                 <div>
