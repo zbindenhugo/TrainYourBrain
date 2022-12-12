@@ -44,9 +44,9 @@ export default function Home ({allCategories, categorie, setCategorie, difficult
                             <option value='medium'>Medium</option>
                             <option value='hard'>Hard</option>
                         </select>
-                        <div className='p-1'>
+                        <div className='p-1 flex'>
                             <label htmlFor='nbQuestions' className='md:text-xl text-md'>Number of questions: {nbQuestions}</label>
-                            <input name='nbQuestions' type='range' min={1} max={50} value={nbQuestions} onChange={(e) => setnbQuestions(parseInt(e.target.value))} />
+                            <input name='nbQuestions' type='range' min={1} max={50} value={nbQuestions} onChange={(e) => setnbQuestions(parseInt(e.target.value))} className='ml-5' />
                         </div>
                         
                     </div>

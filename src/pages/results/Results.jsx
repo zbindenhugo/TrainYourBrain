@@ -1,9 +1,19 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Results({results, questions, score}){
+export default function Results({results, questions}){
 
     const tabQuestAnsw = [];
+    var score = 0;
+
+    const calcScore = () => {
+        for(let i = 0; i < questions?.length; i++){
+            if(questions[i]?.correctAnswer === results[i])
+                score++;
+        }
+    }
+
+    calcScore();
 
     for(let i = 0; i < questions?.length; i++){
         tabQuestAnsw.push(

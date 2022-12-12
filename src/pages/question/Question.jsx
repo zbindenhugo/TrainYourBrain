@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import './Question.css'
 import RandomButtons from "../components/RandomButtons";
-import { useState } from "react";
 
 export default function Question( {questions, indexQuestion, setIndexQuestion, setResults, setScore, score} ){
 
@@ -19,7 +17,6 @@ export default function Question( {questions, indexQuestion, setIndexQuestion, s
         ])
 
         await setIndexQuestion(indexQuestion + 1);
-        await setScore(score + 1);
     }
 
     return(
